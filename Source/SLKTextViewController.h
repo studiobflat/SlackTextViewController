@@ -66,6 +66,8 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 
 /** the containerview so that we can easily move the whole module back and forth in the heirarchy*/
 @property (nonatomic, strong) UIView *scrollViewContainer;
+@property (nonatomic, strong) NSLayoutConstraint *scrollContainerBottomC;
+
 
 
 /**
