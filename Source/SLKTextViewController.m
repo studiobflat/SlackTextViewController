@@ -173,14 +173,14 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 {
     [super viewDidLoad];
 	
-	self.scrollViewContainer = [[UIView alloc] initWithFrame:CGRectZero];
-	
+	self.scrollViewContainer = [[UIView alloc] initWithFrame:self.view.bounds];
+	[self.view addSubview:self.scrollViewContainer];
+
 		[self.scrollViewContainer addSubview:self.scrollViewProxy];
   //  [self.view addSubview:self.scrollViewProxy];
     [self.scrollViewContainer addSubview:self.autoCompletionView];
     [self.scrollViewContainer addSubview:self.typingIndicatorProxyView];
     [self.scrollViewContainer addSubview:self.textInputbar];
-		[self.view addSubview:self.scrollViewContainer];
 
 	
     [self slk_setupViewConstraints];
@@ -2234,7 +2234,6 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
                             @"autoCompletionView": self.autoCompletionView,
                             @"typingIndicatorView": self.typingIndicatorProxyView,
                             @"textInputbar": self.textInputbar,
-													//	@"containerView":self.scrollViewContainer
                             };
 	
 	NSDictionary *containerViews = @{@"containerView":self.scrollViewContainer};
