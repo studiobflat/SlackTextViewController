@@ -173,6 +173,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 {
     [super viewDidLoad];
 	
+	self.scrollViewContainer = [[UIView alloc] initWithFrame:CGRectZero];
+	
 		[self.scrollViewContainer addSubview:self.scrollViewProxy];
   //  [self.view addSubview:self.scrollViewProxy];
     [self.scrollViewContainer addSubview:self.autoCompletionView];
@@ -2232,12 +2234,13 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
                             @"autoCompletionView": self.autoCompletionView,
                             @"typingIndicatorView": self.typingIndicatorProxyView,
                             @"textInputbar": self.textInputbar,
-														@"containerView":self.scrollViewContainer
+													//	@"containerView":self.scrollViewContainer
                             };
 	
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[containerView]|" options:0 metrics:nil views:views]];
+	NSDictionary *containerViews = @{@"containerView":self.scrollViewContainer};
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[containerView]|" options:0 metrics:nil views:containerViews]];
 	
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"W:|[containerView]|" options:0 metrics:nil views:views]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"W:|[containerView]|" options:0 metrics:nil views:containerViews]];
 	
     [self.scrollViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView(0@750)][typingIndicatorView(0)]-0@999-[textInputbar(0)]|" options:0 metrics:nil views:views]];
     [self.scrollViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[autoCompletionView(0@750)][typingIndicatorView]" options:0 metrics:nil views:views]];
